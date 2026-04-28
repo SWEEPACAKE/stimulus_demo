@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+{% block title %}Todo List{% endblock %}
+{% block stylesheets %}
+    <style>.tache-complete { text-decoration: line-through; opacity: 0.5; }</style>
+{% endblock %}
+{% block body %}
+<div
+    data-controller="todo"
+    data-todo-filtre-value="tous"
+    data-todo-total-value="0"
+    data-todo-completes-value="0"
+    {# Exemple d'assignation de classe ici  #}
+    data-todo-done-class="tache-complete"
+>
+
+    <h2>Mes tâches
+        {# Cible qui permet d'afficher nbTaches sur nbTachesTotal #}
+        <span data-todo-target="compteur"></span>
+    </h2>
+
+    {# Barre de progression #}
+    <div class="progress-bar">
+        <div data-todo-target="progression"></div>
+    </div>
+
+    {# Formulaire d'ajout #}
+    <form data-action="submit->todo#ajouterTache">
+        <input
+            type="text"
+            data-todo-target="champSaisie"
+            placeholder="Nouvelle tâche..."
+            required
+        >
+        <button type="submit">Ajouter</button>
+    </form>
+
+    {# Filtres #}
+    <div>
+        <button data-action="todo#filtrer" data-todo-filtre-param="tous">Toutes</button>
+        <button data-action="todo#filtrer" data-todo-filtre-param="actives">Actives</button>
+        <button data-action="todo#filtrer" data-todo-filtre-param="completees">Complétées</button>
+    </div>
+
+    {# Liste des tâches #}
+    <ul data-todo-target="liste"></ul>
+
+    {# Message si liste vide #}
+    <p data-todo-target="messageVide" hidden>Aucune tâche ici !</p>
+
+</div>
+{% endblock %}

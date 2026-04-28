@@ -9,12 +9,13 @@
     data-compteur-step-value="1"
     data-compteur-max-value="10"
     data-compteur-min-value="0"
+    data-compteur-prix-value="17.99"
     >
-    <button data-action="click->compteur#decrementer">−</button>
+    <button data-action="click->compteur#changerValeur" data-compteur-operation-param="-">−</button>
 
     <span data-compteur-target="affichageValeur">0</span>
 
-    <button data-action="click->compteur#incrementer">+</button>
+    <button data-action="click->compteur#changerValeur" data-compteur-operation-param="+">+</button>
 
     <p>Step : <input
         type="number"
@@ -33,5 +34,11 @@
     <input type="number" data-action="change->compteur#updateMinValue" value="0"/>
     <br><br>
     <p data-compteur-target="message"></p>
+    <p data-compteur-target="totalPanier"></p>
+    <ul data-compteur-target="historique">
+        <li>
+            1
+        </li>
+    </ul>
 </div>
 {% endblock %}
