@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+<div
+    data-controller="compteur"
+    data-compteur-valeur-value="0"
+    data-compteur-step-value="1"
+    data-compteur-max-value="10"
+    data-compteur-min-value="0"
+    >
+    <button data-action="click->compteur#decrementer">−</button>
+
+    <span data-compteur-target="affichageValeur">0</span>
+
+    <button data-action="click->compteur#incrementer">+</button>
+
+    <p>Step : <input
+        type="number"
+        data-action="change->compteur#changerStep"
+        value="1" 
+        data-compteur-target="affichageStep"
+        >
+    </p>
+
+    <button type="button" data-action="click->compteur#reinitialiser">Reset compteur</button>
+
+    Valeur max : 
+    <input type="number" data-action="change->compteur#updateMaxValue" value="10"/>
+
+    Valeur min : 
+    <input type="number" data-action="change->compteur#updateMinValue" value="0"/>
+    <br><br>
+    <p data-compteur-target="message"></p>
+</div>
+{% endblock %}
